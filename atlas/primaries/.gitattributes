@@ -1,0 +1,2 @@
+primaries_full_detector.jsonl filter=lfs diff=lfs merge=lfs -text
+primaries_LArEndcapNeg0x6cd79ea0.root filter=lfs diff=lfs merge=lfs -text
