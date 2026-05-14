@@ -22,11 +22,12 @@ with open("run.base.json", "r", encoding="utf-8") as f:
         data['problem']['seed'] = seeds[i]
 
         # Create a directory to hold the run
+        Path(output_prefix).mkdir(exist_ok=True)
         Path(output_prefix + "/run_{}".format(i)).mkdir(exist_ok=True)
 
         # Write to run.i.json
         output_filename = base_file.replace("base", str(i))
-        with open(output_prefix + "run_{}/".format(i) + output_filename, "w", encoding="utf-8") as of:
+        with open(output_prefix + "/run_{}/".format(i) + output_filename, "w", encoding="utf-8") as of:
             json.dump(data, of)
 
 # Run celeritas
@@ -41,5 +42,5 @@ for i in range(num_runs):
     subprocess.run([celer_path + "celer-optical", "run.{}.json".format(i)], check=True)
 
     # Exit run directory
-    os.chdir("..")
+    os.chdir("../..")
 
