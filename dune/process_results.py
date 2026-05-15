@@ -7,7 +7,7 @@ import csv
 num_runs = 10
 
 # Prepare data for writing CSV file
-fieldnames = ["run", "absorption", "along-step", "local-vacancies", "optical-boundary-init", 
+fieldnames = ["run", "absorption", "along-step", "locate-vacancies", "optical-boundary-init", 
               "optical-boundary-post", "optical-discrete-select", "optical-rayleigh", 
               "optical-surface-stepping", "pre-step", "primary-generate", "tracking-cut",
               "setup", "total"]
@@ -25,26 +25,26 @@ for i in range(num_runs):
 
         # Load the timings into a dictionary
         data = dict();
-        data["run"] = str(i)
+        data["run"] = i
             
         # Get the action timings
-        for fn in fieldnames[1,-2]:
-            print(fn)
-            data[fn] = json_input['result']['time']['actions'][fn]
-            
+        for fn in fieldnames[1:-2]:
+            data[fn] = float(json_input['result']['time']['actions'][fn])
+        
         # Get the summary timings
-        for fn in fieldnames[-2, -1]:
-            print(fn)
-            data[fn] = json['result']['time'][fn]
+        for fn in fieldnames[-2:]:
+            data[fn] = float(json_input['result']['time'][fn])
             
         # Append to the CSV field
         fielddata.append(data)
 
 # Write the CSV file for the detailed timing information for all of the runs
-with open("detailed_timings.csv", "w", newline="\n", encoding="utf-8") as output:
+detailed_timings_filename = "detailed_timings.csv"
+with open(detailed_timings_filename, "w", newline="\n", encoding="utf-8") as output:
     writer = csv.DictWriter(output, fieldnames=fieldnames)
     writer.writeheader()
     writer.writerows(fielddata)
+print("Wrote detailed timings to {}".format(detailed_timings_filename))
 
 # Process the field data to get timing averages over all of the runs
 avg_data = dict()
@@ -57,7 +57,10 @@ for fn in fieldnames:
     avg_data[fn] = sum(list_data) / num_runs
 
 # Write the CSV file for the average timing information
+average_timings_filename = "average_timings.csv"
 with open("average_timings.csv", "w", newline="\n", encoding="utf-8") as output:
     writer = csv.DictWriter(output, fieldnames=fieldnames)
     writer.writeheader()
     writer.writerows([avg_data])
+print("Wrote average timings to {}".format(average_timings_filename))
+
