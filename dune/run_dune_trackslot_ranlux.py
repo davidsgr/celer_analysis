@@ -37,7 +37,7 @@ for i in range(num_runs):
     os.chdir(output_prefix + "/run_" + str(i))
 
     # Run celeritas
-    celer_path = "/scratch/gqe/install/celeritas-release-orange-ranlux/bin/"
+    celer_path = "/scratch/gqe/install/celeritas-release-orange-track-ranlux/bin/"
     print("Running Celeritas {}/{}.".format(i+1, num_runs))
     subprocess.run([celer_path + "celer-optical", "run.{}.json".format(i)], check=True)
 
