@@ -1,6 +1,6 @@
 {
-"geometry_file": "geometry/atlas-full-run4_LArEndcapNeg0x6cd79ea0.gdml",
-"event_file": "primaries/primaries_LArEndcapNeg0x6cd79ea0.root",
+"geometry_file": "../../geometry/atlas-full-run4_LArEndcapNeg0x6cd79ea0.gdml",
+"event_file": "../../primaries/primaries_LArEndcapNeg0x6cd79ea0.root",
 "physics_options": {
     "coulomb_scattering": false,
     "eloss_fluctuation": true,
@@ -10,6 +10,7 @@
     "rayleigh_scattering": true,
     "msc_step_algorithm": "minimal"
 },
+"seed": 12345,
 "field_type": "uniform",
 "field": [0.0, 0.0, 4.0],
 "initializer_capacity": 1e7,
