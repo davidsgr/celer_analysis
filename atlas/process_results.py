@@ -4,7 +4,7 @@ import json
 import csv
 
 # Define number of runs
-num_runs = 1
+num_runs = 10
 
 # Prepare data for writing CSV file
 fieldnames = ["run", "along-step-neutral", "along-step-uniform-msc", "initialize-tracks", "setup", "total"]
