@@ -8,7 +8,7 @@ import subprocess
 base_file = "run.base.json"
 num_runs = 10
 seeds = [12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 1234]
-output_prefix = "trackslot_xorwow"
+output_prefix = "track_xorwow"
 
 # Create input files
 with open("run.base.json", "r", encoding="utf-8") as f:
@@ -40,7 +40,7 @@ for i in range(num_runs):
     output_file = "out.{}.json".format(i)
 
     # Run celeritas
-    celer_path = "/scratch/gqe/install/celeritas-release-orange-trackslot-xorwow/bin/"
+    celer_path = "/scratch/gqe/install/celeritas-release-orange-track-xorwow/bin/"
     cmd = [celer_path + "celer-sim", "run.{}.json".format(i)]
     with open(output_file, "w", encoding="utf-8") as output:
        print("Running Celeritas {}/{}.".format(i+1, num_runs))
