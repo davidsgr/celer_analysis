@@ -40,7 +40,6 @@ for i in range(num_runs):
             assert(json_input['system']['build']['config']['reseed'])
 
         # Load the kernel data 
-        print(json_input['system']['kernels'][0].keys())
         kern_data = list()
         for k in json_input['system']['kernels']:
             if k['name'] in kernels:
@@ -63,7 +62,6 @@ for i in range(num_runs):
         for fn in fieldnames[-2:]:
             data[fn] = float(json_input['result']['time'][fn])
 
-            
         # Append to the CSV field
         fielddata.append(data)
 
@@ -76,15 +74,17 @@ with open(detailed_timings_filename, "a", newline="\n", encoding="utf-8") as out
 print("Wrote detailed timings to {}".format(detailed_timings_filename))
 
 # Write the CSV field for the detailed kernel information for all of the runs
-#print(kerneldata)
-detailed_kernel_filename = "detailed_kernel_info.csv"
+detailed_kernel_filename = "kernel_info.csv"
 with open(detailed_kernel_filename, "w", newline="\n", encoding="utf-8") as output:
-    for i in range(num_runs):
-        output.write("Run {}\n".format(i))
-        writer = csv.DictWriter(output, fieldnames=kernel_fieldnames)
-        writer.writeheader()
-        writer.writerows(kerneldata[i])
+    # Write run 0
+    writer = csv.DictWriter(output, fieldnames=kernel_fieldnames)
+    writer.writeheader()
+    writer.writerows(kerneldata[0])
 print("Wrote detailed kernel info to {}".format(detailed_kernel_filename))
+
+# Check that the other runs are exactly the same
+for i in range(1, num_runs):
+    assert(kerneldata[i] == kerneldata[0])
 
 # Process the field data to get timing averages over all of the runs
 avg_data = dict()

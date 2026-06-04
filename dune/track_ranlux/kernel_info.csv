@@ -1,0 +1,5 @@
+kernel,num_regs,occupancy,local_mem
+rng-reseed,104,0.25,0
+primary-generate,128,0.25,144
+pre-step,64,0.5,8
+rayleigh,110,0.25,64
