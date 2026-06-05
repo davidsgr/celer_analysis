@@ -35,7 +35,7 @@ for i in range(num_runs):
             assert(json_input['system']['build']['config']['core_rng'] == core_rng)
         if reseed is None:
             reseed = json_input['system']['build']['config']['reseed']
-            print("These runs used the {} RNG".format(reseed))
+            print("These runs used {} reseeding".format(reseed))
         else:
             assert(json_input['system']['build']['config']['reseed'])
 
@@ -104,9 +104,3 @@ with open("average_timings.csv", "w", newline="\n", encoding="utf-8") as output:
     writer.writerows([avg_data])
 print("Wrote average timings to {}".format(average_timings_filename))
 
-# Process the kernel data to get averages over all of the runs
-#avg_kernel_data = dict()
-#for kn in kernel_fieldnames:
-
-    # Construct a list of field data over all runs
- #   list_data = [kerneldata[i][]
