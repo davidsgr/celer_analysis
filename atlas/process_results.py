@@ -11,7 +11,7 @@ fieldnames = ["run", "along-step-neutral", "along-step-uniform-msc", "annihil-2-
               "conv-bethe-heitler", "extend-from-primaries", "extend-from-secondaries", "geo-boundary",
               "initialize-tracks", "ioni-moller-bhabha", "photoel-livermore", "physics-discrete-select",
               "pre-step", "scat-klein-nishina", "scat-rayleigh", "tracking-cut", "setup", "total"]
-kernels = ["primary-generate", "pre-step", "rayleigh", "rng-reseed"]
+kernels = ["discrete-select", "surface-physics", "primary-generate", "pre-step", "rayleigh", "rng-reseed"]
 kernel_fieldnames = ['kernel', 'num_regs', 'occupancy', 'local_mem']
 fielddata = list()
 kerneldata = list()
