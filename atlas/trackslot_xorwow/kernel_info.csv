@@ -1,0 +1,2 @@
+kernel,num_regs,occupancy,local_mem
+pre-step,80,0.375,32

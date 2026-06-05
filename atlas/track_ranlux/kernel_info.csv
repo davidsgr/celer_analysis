@@ -1,0 +1,3 @@
+kernel,num_regs,occupancy,local_mem
+rng-reseed,104,0.25,0
+pre-step,80,0.375,56
