@@ -40,8 +40,6 @@ for i in range(num_runs):
         else:
             assert(json_input['system']['build']['config']['reseed'])
 
-        print(json_input['result']['runner']['time']['actions'].keys())
-
         # Load the kernel data 
         kern_data = list()
         for k in json_input['system']['kernels']:
