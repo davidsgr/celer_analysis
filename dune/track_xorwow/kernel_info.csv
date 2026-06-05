@@ -1,4 +1,5 @@
 kernel,num_regs,occupancy,local_mem
 primary-generate,64,0.5,152
 pre-step,47,0.625,0
+discrete-select,45,0.625,0
 rayleigh,48,0.625,64

@@ -10,7 +10,7 @@ num_runs = 10
 fieldnames = ['run', 'absorption', 'along-step', 'boundary-init', 'boundary-post', 'discrete-select', 
               'locate-vacancies', 'pre-step', 'primary-generate', 'rayleigh', 'surface-physics', 
               'tracking-cut', "setup", "total"]
-kernels = ["primary-generate", "pre-step", "rayleigh", "rng-reseed"]
+kernels = ["primary-generate", "pre-step", "rayleigh", "rng-reseed", "discrete-select", "surface-physics"]
 kernel_fieldnames = ['kernel', 'num_regs', 'occupancy', 'local_mem']
 fielddata = list()
 kerneldata = list()
