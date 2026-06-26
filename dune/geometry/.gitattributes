@@ -1,3 +1,0 @@
-dune-celeritas-rice.gdml filter=lfs diff=lfs merge=lfs -text
-dune-celeritas-rice_wireframe.png filter=lfs diff=lfs merge=lfs -text
-dune-celeritas-rice_x-slice.png filter=lfs diff=lfs merge=lfs -text

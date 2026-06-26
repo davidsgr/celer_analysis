@@ -6,43 +6,45 @@
     },
     "mie_scattering": true,
     "rayleigh_scattering": true,
-    "wavelength_shifting": {
-      "enable": false
-    },
-    "wavelength_shifting2": {
-      "enable": false
-    }
+    "absorption": true,
+    "wavelength_shifting": null,
+    "wavelength_shifting2": null
   },
   "problem": {
     "capacity": {
       "generators": 1,
       "primaries": 1,
-      "tracks": 1048576
+      "tracks": 2097152
+    },
+    "limits": {
+      "steps": null,
+      "step_iters": null
     },
     "generator": {
       "_type": "primary",
-      "primaries": 1073741824,
+      "primaries": 67108864,
       "angle": {
         "_type": "isotropic"
       },
       "energy": {
-        "_type": "normal",
-        "mean": 1e-5,
-        "stddev": 1e-6
+        "_type": "delta",
+        "value": 1e-5
       },
       "shape": {
         "_type": "delta",
-        "value": [0, 0, 0]
+        "value": [100, 250, 600]
       }
     },
     "model": {
-      "geometry": "../../geometry/dune-celeritas-rice.gdml"
+      "geometry": "../../../models/dune-zwires.gdml"
     },
-    "output_file": "out.json",
+    "output_file": "primary-gpu.out.json",
     "seed": 12345,
     "timers": {
-      "action": true
-    }
+      "action": true,
+      "step": true
+    },
+    "step": null
   },
   "system": {
     "device": {},
