@@ -9,11 +9,11 @@ num_runs = 10
 seeds = [12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 1234]
 
 def run_problem(mode, reseed, rng):
-    assert mode == "cpu" || mode == "gpu"
-    assert reseed == "track" || reseed == "trackslot"
-    assert rng == "ranluxpp" || rng == "xorwow"
+    assert mode == "cpu" or mode == "gpu"
+    assert reseed == "track" or reseed == "trackslot"
+    assert rng == "ranlux" or rng == "xorwow"
 
-    print(">>> Running Celeritas on the {} with {} reseeding and the {} RNG".format(mode, reseed, rng))
+    print(">>> Running Celeritas on the {} with {} reseeding and the {} RNG".format(mode.upper(), reseed, rng))
 
     # Create input files
     base_file = "run-{}.base.json".format(mode)
@@ -55,6 +55,6 @@ def run_problem(mode, reseed, rng):
 if __name__ == "__main__":
     for m in ["cpu", "gpu"]:
         for s in ["track", "trackslot"]:
-            for r in ["ranluxpp", "xorwow"]:
+            for r in ["ranlux", "xorwow"]:
                 run_problem(m, s, r)
 
