@@ -21,7 +21,7 @@ reseed = None
 for i in range(num_runs):
     
     # Open the JSON file for run i
-    input_filename = "run_{}/out.{}.json".format(i, i)
+    input_filename = "run_{}/out-gpu.{}.json".format(i, i)
     with open(input_filename, "r", encoding="utf-8") as input:
 
         # Read and parse the JSON file
