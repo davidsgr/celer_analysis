@@ -8,6 +8,8 @@ import subprocess
 num_runs = 10
 seeds = [12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 1234]
 
+base_install_path = "/scratch/gqe/install/develop-dc56207d6ef907c02c0523aaf3dede99086c627c/"
+
 def run_problem(mode, reseed, rng):
     assert mode == "cpu" or mode == "gpu"
     assert reseed == "track" or reseed == "trackslot"
@@ -44,16 +46,17 @@ def run_problem(mode, reseed, rng):
         os.chdir(output_prefix + "/run_" + str(i))
 
         # Run celeritas
-        celer_path = "/scratch/gqe/install/celeritas-release-orange-{}-{}/bin/".format(reseed, rng)
+        celer_path = base_install_path + "celeritas-release-orange-{}-{}/bin/".format(reseed, rng)
         print("## Running Celeritas {}/{}.".format(i + 1, num_runs))
-        subprocess.run([celer_path + "celer-optical", "run.{}.json".format(i)], check=True)
+        subprocess.run([celer_path + "celer-optical", "run-{}.{}.json".format(mode, i)], check=True)
 
         # Exit run directory
         os.chdir("../..")
 
 
 if __name__ == "__main__":
-    for m in ["cpu", "gpu"]:
+    # For now, we only analyze GPU performance
+    for m in ["gpu"]:
         for s in ["track", "trackslot"]:
             for r in ["ranlux", "xorwow"]:
                 run_problem(m, s, r)

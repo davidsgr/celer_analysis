@@ -36,7 +36,7 @@
       }
     },
     "model": {
-      "geometry": "../../../models/dune-zwires.gdml"
+      "geometry": "../../dune-zwires.gdml"
     },
     "output_file": "primary-gpu.out.json",
     "seed": 12345,
