@@ -8,8 +8,8 @@ import subprocess
 num_runs = 10
 seeds = [12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 1234]
 
-base_install_path = "/scratch/gqe/install/make-ranlux-32-bit-6d9cd365278220dd26ad3e58959e7618560c1405/"
-base_install_path = "/scratch/gqe/install/always_advance/"
+#base_install_path = "/scratch/gqe/install/make-ranlux-32-bit-6d9cd365278220dd26ad3e58959e7618560c1405/"
+base_install_path = "/scratch/gqe/install/analytic_rayleigh/"
 
 def run_problem(mode, reseed, rng):
     assert mode == "cpu" or mode == "gpu"
