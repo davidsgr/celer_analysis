@@ -50,8 +50,8 @@ def run_problem(mode, reseed, rng):
         os.chdir(output_prefix + "/run_" + str(i))
 
         # Run celeritas
-        #celer_path = base_install_path + "release-orange-{}-{}/bin/".format(reseed, rng)
-        celer_path = base_install_path + "/bin/".format(reseed, rng)
+        celer_path = base_install_path + "release-orange-{}-{}/bin/".format(reseed, rng)
+        #celer_path = base_install_path + "/bin/".format(reseed, rng)
         print("## Running Celeritas {}/{}.".format(i + 1, num_runs))
         subprocess.run([celer_path + "celer-optical", "run-{}.{}.json".format(mode, i)], check=True)
 
