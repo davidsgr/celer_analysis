@@ -5,22 +5,25 @@ from pathlib import Path
 import os
 import subprocess
 
-num_runs = 10
 seeds = [12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 1234]
 
-#base_install_path = "/scratch/gqe/install/make-ranlux-32-bit-6d9cd365278220dd26ad3e58959e7618560c1405/"
-base_install_path = "/scratch/gqe/install/analytic_rayleigh/"
+base_install_path = "/scratch/gqe/install/develop-dc56207d6ef907c02c0523aaf3dede99086c627c/"
 
 def run_problem(mode, reseed, rng):
     assert mode == "cpu" or mode == "gpu"
     assert reseed == "track" or reseed == "trackslot"
     assert rng == "ranlux" or rng == "xorwow"
 
+    # If we are running GPU, we run 10 runs and average their results
+    # If we are running CPU, DUNE is too expensive to run 10 runs, so we'll just run 1
+    num_runs = 10
+    if (mode == "cpu"):
+        num_runs = 1
     print(">>> Running Celeritas on the {} with {} reseeding and the {} RNG".format(mode.upper(), reseed, rng))
 
     # Create input files
     base_file = "run-{}.base.json".format(mode)
-    output_prefix = "{}_{}".format(reseed, rng)
+    output_prefix = "{}_{}_{}".format(mode, reseed, rng)
     with open(base_file, "r", encoding="utf-8") as f:
         data = json.load(f)
     
@@ -57,9 +60,8 @@ def run_problem(mode, reseed, rng):
 
 
 if __name__ == "__main__":
-    # For now, we only analyze GPU performance
-    for m in ["gpu"]:
-        for s in ["track"]:
-            for r in ["ranlux"]:
+    for m in ["cpu", "gpu"]:
+        for s in ["trackslot", "track"]:
+            for r in ["xorwow", "ranlux"]:
                 run_problem(m, s, r)
 
