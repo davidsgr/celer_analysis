@@ -1,6 +1,0 @@
-kernel,num_regs,occupancy,local_mem
-rng-reseed,104,0.25,0
-primary-generate,80,0.375,272
-pre-step,72,0.375,0
-discrete-select,64,0.5,8
-rayleigh,114,0.25,64
