@@ -7,19 +7,19 @@ import subprocess
 import sys
 
 # Slurm settings: override via environment variables
-SLURM_PARTITION = os.environ.get("DUNE_SLURM_PARTITION", "")
-SLURM_ACCOUNT = os.environ.get("DUNE_SLURM_ACCOUNT", "")
-SLURM_GPU_GRES = os.environ.get("DUNE_SLURM_GPU_GRES", "gpu:1")
-SLURM_CPUS = os.environ.get("DUNE_SLURM_CPUS", "1")
-SLURM_TIME_GPU = os.environ.get("DUNE_SLURM_TIME_GPU", "04:00:00")
-SLURM_TIME_CPU = os.environ.get("DUNE_SLURM_TIME_CPU", "48:00:00")
+SLURM_PARTITION = "hudson"
+SLURM_ACCOUNT = "ornl-users"
+SLURM_GPU_GRES = "gpu:1"
+SLURM_CPUS = "1"
+SLURM_TIME_GPU = "00:30:00"
+SLURM_TIME_CPU = "4:00:00"
 
 # Write batch scripts but do not call sbatch
 DRY_RUN = "--dry-run" in sys.argv
 
 seeds = [12345, 23456, 34567, 45678, 56789, 67890, 78901, 89012, 90123, 1234]
 
-base_install_path = "/scratch/gqe/install/make-ranlux-32-bit-6d9cd365278220dd26ad3e58959e7618560c1405/"
+base_install_path = "/scratch/gqe/install/add_rng_advance_kernel-b04f067/"
 
 def run_problem(mode, reseed, rng):
     assert mode == "cpu" or mode == "gpu"
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     all_jobs = []
     for m in ["cpu", "gpu"]:
         for s in ["trackslot", "track"]:
-            for r in ["ranlux"]:
+            for r in ["ranlux", "xorwow"]:
                 all_jobs += run_problem(m, s, r)
     print(">>> Submitted {} jobs. Monitor with: squeue -u $USER".format(len(all_jobs)))
 
