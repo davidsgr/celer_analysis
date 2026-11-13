@@ -1,0 +1,15 @@
+status: Initializing Geant4 run manager
+status: Initializing Geant4 geometry and physics list
+status: Building Geant4 physics tables
+info: Loading Geant4 geometry from GDML at ../../dune-zwires.gdml
+status: Transferring data from Geant4
+/home/gqe/Codes/celeritas/source/src/celeritas/ext/detail/GeantPhysicsLoader.cc:251: warning: Loaded no model data from process G4OpMieHG("OpMieHG")
+status: Initializing problem
+status: Converting Geant4 geometry elements to ORANGE input
+status: Constructing ORANGE surfaces and runtime data
+/home/gqe/Codes/celeritas/source/src/celeritas/setup/Problem.cc:793: warning: Problem contains optical physics without any geometry surface definitions: default physics will be used for all surfaces
+info: Constructed 1 optical materials with 1 present in the geometry
+status: Celeritas optical setup complete
+info: Creating 1 device streams
+info: Initialized Celeritas optical state with 2097152 track slots
+info: Appending 4 output entries to out-gpu.7.json
